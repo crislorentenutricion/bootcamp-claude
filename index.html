@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bootcamp — Tu negocio con superpoderes</title>
+<style>
+/* =====================================================
+   RESET & BASE
+===================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #f7f8fc;
+  --surface:  #ffffff;
+  --dark:     #111827;
+  --mid:      #6b7280;
+  --light:    #e5e7eb;
+  --accent:   #6c63ff;
+  --accent-bg:#eeecff;
+  --green:    #059669;
+  --green-bg: #d1fae5;
+  --yellow:   #d97706;
+  --yellow-bg:#fef3c7;
+  --red:      #dc2626;
+  --red-bg:   #fee2e2;
+  --blue:     #2563eb;
+  --blue-bg:  #dbeafe;
+  --radius:   14px;
+  --shadow:   0 2px 16px rgba(0,0,0,0.07);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+section { margin-bottom: 48px; }
+
+/* =====================================================
+   HERO
+===================================================== */
+.hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+  padding: 72px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(108,99,255,0.2) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(108,99,255,0.25);
+  border: 1px solid rgba(108,99,255,0.5);
+  color: #a5b4fc;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, #a5b4fc, #f9a8d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 18px;
+  color: #cbd5e1;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+.hero-meta {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+.hero-meta-item strong { color: white; }
+
+/* =====================================================
+   PROGRESS BANNER
+===================================================== */
+.progress-banner {
+  background: var(--surface);
+  border-bottom: 1px solid var(--light);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.progress-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.progress-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mid);
+  white-space: nowrap;
+}
+.progress-bar-wrap {
+  flex: 1;
+  background: var(--light);
+  border-radius: 99px;
+  height: 10px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #a855f7);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+.progress-pct {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* =====================================================
+   NAV PILLS
+===================================================== */
+.nav-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 28px 0 0;
+}
+.nav-pill {
+  background: var(--surface);
+  border: 1px solid var(--light);
+  color: var(--mid);
+  padding: 7px 16px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.nav-pill:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* =====================================================
+   SECTION HEADER
+===================================================== */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-top: 48px;
+}
+.section-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--dark);
+}
+.section-header p {
+  font-size: 14px;
+  color: var(--mid);
+  margin-top: 2px;
+}
+
+/* =====================================================
+   CHECKLIST ITEMS
+===================================================== */
+.checklist { display: flex; flex-direction: column; gap: 10px; }
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--light);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.check-item:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.check-item.done { background: #f0fdf4; border-color: #86efac; }
+
+.check-box {
+  width: 24px; height: 24px;
+  border: 2px solid var(--light);
+  border-radius: 7px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+  transition: all 0.15s;
+  background: white;
+}
+.check-item.done .check-box {
+  background: var(--green);
+  border-color: var(--green);
+}
+.check-box svg { display: none; }
+.check-item.done .check-box svg { display: block; }
+
+.check-body { flex: 1; }
+.check-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.3;
+}
+.check-item.done .check-title { text-decoration: line-through; color: var(--mid); }
+.check-desc {
+  font-size: 13px;
+  color: var(--mid);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.check-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+  margin-top: 8px;
+  display: inline-block;
+}
+.tag-req  { background: #fee2e2; color: #dc2626; }
+.tag-opt  { background: #dbeafe; color: #2563eb; }
+.tag-rec  { background: #d1fae5; color: #059669; }
+.tag-pre  { background: #fef3c7; color: #d97706; }
+
+/* =====================================================
+   AGENDA
+===================================================== */
+.agenda { display: flex; flex-direction: column; gap: 0; }
+
+.agenda-item {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+.agenda-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 48px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--light);
+}
+.agenda-item.done-block::after { background: #86efac; }
+
+.agenda-time-col {
+  width: 46px;
+  flex-shrink: 0;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.agenda-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--light);
+  background: white;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.agenda-item.done-block .agenda-dot {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.agenda-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1.5px solid var(--light);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.agenda-card:hover { border-color: var(--accent); }
+.agenda-item.done-block .agenda-card {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.agenda-time {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mid);
+  letter-spacing: .3px;
+  margin-bottom: 4px;
+}
+.agenda-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.agenda-item.done-block .agenda-title { color: var(--mid); text-decoration: line-through; }
+.agenda-desc {
+  font-size: 13px;
+  color: var(--mid);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.agenda-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 99px;
+  margin-top: 8px;
+}
+.badge-content { background: #dbeafe; color: #1d4ed8; }
+.badge-hands   { background: #fef3c7; color: #92400e; }
+.badge-break   { background: #f3f4f6; color: #6b7280; }
+.badge-demo    { background: #ede9fe; color: #6d28d9; }
+.badge-workshop{ background: #d1fae5; color: #065f46; }
+
+/* =====================================================
+   PILLAR CARDS
+===================================================== */
+.pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+@media (max-width: 600px) { .pillars { grid-template-columns: 1fr; } }
+
+.pillar-card {
+  background: var(--surface);
+  border: 1.5px solid var(--light);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: box-shadow 0.15s;
+}
+.pillar-card:hover { box-shadow: var(--shadow); }
+
+.pillar-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.pillar-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.pillar-card p  { font-size: 13px; color: var(--mid); line-height: 1.6; }
+.pillar-example {
+  margin-top: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-family: 'Menlo', 'Monaco', monospace;
+  color: #374151;
+  line-height: 1.7;
+}
+
+/* =====================================================
+   WORKSHOP / NOTAS
+===================================================== */
+.workshop-grid { display: flex; flex-direction: column; gap: 16px; }
+
+.workshop-card {
+  background: var(--surface);
+  border: 1.5px solid var(--light);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.workshop-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.workshop-card .hint {
+  font-size: 13px;
+  color: var(--mid);
+  margin-bottom: 12px;
+}
+.workshop-card textarea {
+  width: 100%;
+  min-height: 90px;
+  border: 1.5px solid var(--light);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--dark);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s;
+  background: var(--bg);
+}
+.workshop-card textarea:focus { border-color: var(--accent); background: white; }
+.workshop-card textarea::placeholder { color: #d1d5db; }
+
+.save-note {
+  font-size: 12px;
+  color: var(--mid);
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.saved-indicator {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.saved-indicator.show { opacity: 1; }
+
+/* =====================================================
+   RESOURCES
+===================================================== */
+.resources { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 580px) { .resources { grid-template-columns: 1fr; } }
+
+.resource-card {
+  background: var(--surface);
+  border: 1.5px solid var(--light);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: all 0.15s;
+}
+.resource-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.resource-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.resource-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.resource-card p  { font-size: 12px; color: var(--mid); line-height: 1.4; }
+
+/* =====================================================
+   RESET BUTTON
+===================================================== */
+.reset-zone {
+  background: var(--surface);
+  border: 1.5px dashed var(--light);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  margin-top: 48px;
+  margin-bottom: 64px;
+}
+.reset-zone p { font-size: 13px; color: var(--mid); margin-bottom: 12px; }
+.btn-reset {
+  background: white;
+  border: 1.5px solid var(--light);
+  color: var(--mid);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-reset:hover { border-color: var(--red); color: var(--red); }
+
+/* =====================================================
+   FOOTER
+===================================================== */
+footer {
+  background: var(--dark);
+  color: #64748b;
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 13px;
+}
+footer strong { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<!-- HERO ================================================== -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">🚀 Bootcamp de 1 día · 5 horas</div>
+    <h1>Tu negocio con<br><span>superpoderes</span></h1>
+    <p class="hero-sub">Aprende a construir un asistente de IA que conoce tu negocio, habla tu idioma y automatiza tus procesos repetitivos. Con Claude.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">📍 <strong>Formato presencial</strong></div>
+      <div class="hero-meta-item">⏱️ <strong>09:30 – 14:30</strong></div>
+      <div class="hero-meta-item">💻 <strong>Trae tu portátil</strong></div>
+      <div class="hero-meta-item">🛠️ <strong>Aprenderás construyendo</strong></div>
+    </div>
+    <nav class="nav-pills" style="margin-top:32px;">
+      <a class="nav-pill" href="#preparacion">📋 Preparación</a>
+      <a class="nav-pill" href="#agenda">🗓️ Agenda</a>
+      <a class="nav-pill" href="#pilares">🧱 Los 4 pilares</a>
+      <a class="nav-pill" href="#workshop">✏️ Tu diseño</a>
+      <a class="nav-pill" href="#recursos">📦 Recursos</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PROGRESS BAR ========================================== -->
+<div class="progress-banner">
+  <div class="container">
+    <div class="progress-inner">
+      <span class="progress-label">Tu progreso</span>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <span class="progress-pct" id="progressPct">0%</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN ================================================== -->
+<main class="container">
+
+  <!-- ====================================================
+    SECCIÓN 1 — PREPARACIÓN PREVIA
+  ==================================================== -->
+  <section id="preparacion">
+    <div class="section-header">
+      <div class="section-icon" style="background:#ede9fe;">📋</div>
+      <div>
+        <h2>Antes del bootcamp</h2>
+        <p>Completa esto antes del día para aprovechar al máximo las 5 horas</p>
+      </div>
+    </div>
+
+    <div class="checklist" id="checklist-pre">
+
+      <div class="check-item" data-id="pre-1">
+        <div class="check-box">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Crear cuenta en Claude (claude.ai)</div>
+          <div class="check-desc">Necesitas una cuenta de pago: <strong>Pro (20$/mes)</strong> o Team. El plan gratuito no incluye Claude Code ni acceso a MCPs.</div>
+          <span class="check-tag tag-req">⚠️ Obligatorio</span>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="pre-2">
+        <div class="check-box">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Instalar Claude Code (CLI)</div>
+          <div class="check-desc">En la terminal: <code style="background:#f3f4f6;padding:1px 6px;border-radius:4px;font-size:12px;">npm install -g @anthropic-ai/claude-code</code> y luego <code style="background:#f3f4f6;padding:1px 6px;border-radius:4px;font-size:12px;">claude</code> para iniciar sesión. Necesitas Node.js 18+ instalado.</div>
+          <span class="check-tag tag-req">⚠️ Obligatorio</span>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="pre-3">
+        <div class="check-box">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Tener acceso a tus herramientas</div>
+          <div class="check-desc">Verifica que puedes acceder a: Google Drive, Gmail o el email que uses con clientes, y cualquier herramienta donde tengas datos de tu negocio (Notion, Sheets, etc.).</div>
+          <span class="check-tag tag-req">⚠️ Obligatorio</span>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="pre-4">
+        <div class="check-box">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Hacer la lista de tus 5 procesos más repetitivos</div>
+          <div class="check-desc">Piensa en las 5 tareas que haces cada semana de forma idéntica o muy similar. Estos serán los candidatos a convertirse en skills automatizadas. Anótalas en el apartado "Tu diseño" de esta página.</div>
+          <span class="check-tag tag-rec">📝 Recomendado</span>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="pre-5">
+        <div class="check-box">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Traer el portátil cargado (y el cargador)</div>
+          <div class="check-desc">Trabajaremos directamente en el terminal. Asegúrate de tener batería o enchufe disponible. 5 horas con la terminal abierta consume bastante.</div>
+          <span class="check-tag tag-rec">💡 No te olvides</span>
+        </div>
+      </div>
+
+      <div class="check-item" data-id="pre-6">
+        <div class="check-box">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7L5.5 10.5L12 3.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="check-body">
+          <div class="check-title">Leer los 4 pilares (sección más abajo)</div>
+          <div class="check-desc">No hace falta entenderlos a fondo, solo familiarizarte con los conceptos: CLAUDE.md, convenciones, skills y MCPs. Te ayudará a seguir el ritmo desde el principio.</div>
+          <span class="check-tag tag-opt">🎁 Opcional pero útil</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================
+    SECCIÓN 2 — AGENDA
+  ==================================================== -->
+  <section id="agenda">
+    <div class="section-header">
+      <div class="section-icon" style="background:#dbeafe;">🗓️</div>
+      <div>
+        <h2>Agenda del día</h2>
+        <p>Marca cada bloque según lo vayas completando</p>
+      </div>
+    </div>
+
+    <div class="agenda" id="checklist-agenda">
+
+      <div class="agenda-item" data-id="ag-1">
+        <div class="agenda-time-col">
+          <div class="agenda-dot"></div>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-time">09:30 – 10:30</div>
+          <div class="agenda-title">Introducción: el sistema completo</div>
+          <div class="agenda-desc">Por qué Claude va más allá de un chatbot. El caso real. Las 4 capas del sistema. Demo rápida del resultado final.</div>
+          <span class="agenda-badge badge-content">Contenido</span>
+        </div>
+      </div>
+
+      <div class="agenda-item" data-id="ag-2">
+        <div class="agenda-time-col">
+          <div class="agenda-dot"></div>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-time">10:30 – 11:30</div>
+          <div class="agenda-title">CLAUDE.md y Convenciones</div>
+          <div class="agenda-desc">Cómo escribir el "contrato de trabajo" de tu asistente. Los manuales de procedimiento. Ejercicio práctico: escribir tu primer CLAUDE.md.</div>
+          <span class="agenda-badge badge-hands">✏️ Ejercicio práctico</span>
+        </div>
+      </div>
+
+      <div class="agenda-item" data-id="ag-3">
+        <div class="agenda-time-col">
+          <div class="agenda-dot"></div>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-time">11:30 – 12:00</div>
+          <div class="agenda-title">☕ Descanso</div>
+          <div class="agenda-desc">Pausa. Aprovecha para repasar las notas del CLAUDE.md y añadir alguna regla que se te haya ocurrido.</div>
+          <span class="agenda-badge badge-break">Descanso</span>
+        </div>
+      </div>
+
+      <div class="agenda-item" data-id="ag-4">
+        <div class="agenda-time-col">
+          <div class="agenda-dot"></div>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-time">12:00 – 13:00</div>
+          <div class="agenda-title">Skills + Demo en vivo</div>
+          <div class="agenda-desc">Qué es una skill y cómo se escribe. Demo completa: de la orden en lenguaje natural al resultado final. Los puntos de revisión.</div>
+          <span class="agenda-badge badge-demo">🎬 Demo en vivo</span>
+        </div>
+      </div>
+
+      <div class="agenda-item" data-id="ag-5">
+        <div class="agenda-time-col">
+          <div class="agenda-dot"></div>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-time">13:00 – 14:00</div>
+          <div class="agenda-title">MCPs: conectando el mundo real</div>
+          <div class="agenda-desc">Qué son los MCPs y para qué sirven. Instalación en vivo. Seguridad: qué nunca subir al repositorio público.</div>
+          <span class="agenda-badge badge-content">Contenido + práctica</span>
+        </div>
+      </div>
+
+      <div class="agenda-item" data-id="ag-6">
+        <div class="agenda-time-col">
+          <div class="agenda-dot"></div>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-time">14:00 – 14:30</div>
+          <div class="agenda-title">Workshop: diseña tu sistema</div>
+          <div class="agenda-desc">30 minutos para diseñar el sistema de tu negocio específico. Puesta en común. Próximos pasos concretos para esta semana.</div>
+          <span class="agenda-badge badge-workshop">🛠️ Workshop</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================
+    SECCIÓN 3 — LOS 4 PILARES (referencia rápida)
+  ==================================================== -->
+  <section id="pilares">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fef3c7;">🧱</div>
+      <div>
+        <h2>Los 4 pilares del sistema</h2>
+        <p>Referencia rápida para usar durante el bootcamp</p>
+      </div>
+    </div>
+
+    <div class="pillars">
+
+      <div class="pillar-card">
+        <div class="pillar-num" style="background:#ede9fe;color:#6d28d9;">1</div>
+        <h3>🧠 CLAUDE.md</h3>
+        <p>El "contrato de trabajo" de tu asistente. Se carga en <strong>cada conversación</strong>. Define quién eres, qué haces, cómo te comunicas y qué reglas seguir siempre.</p>
+        <div class="pillar-example">
+# Mi Negocio
+Titular: Ana García
+Marca: Ana García Estudio
+Servicio: Fotografía de bodas
+Tono: Cercano, elegante
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num" style="background:#d1fae5;color:#065f46;">2</div>
+        <h3>📚 Convenciones</h3>
+        <p>Los manuales detallados de cada proceso. Claude los consulta <strong>cuando va a ejecutar una tarea</strong>. Si cambias una regla o un precio, lo cambias aquí.</p>
+        <div class="pillar-example">
+convenciones/
+├── clientes/
+│   └── onboarding.md
+├── servicios/
+│   └── presupuesto.md
+└── comunicacion/
+    └── plantillas-email.md
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num" style="background:#fef3c7;color:#92400e;">3</div>
+        <h3>⚙️ Skills</h3>
+        <p>Un proceso convertido en comando. Escribes <strong>"envía presupuesto a Ana"</strong> y Claude ejecuta los 6 pasos del proceso completo, con puntos de revisión.</p>
+        <div class="pillar-example">
+---
+name: enviar-presupuesto
+description: Triggers: "envía
+  presupuesto a [nombre]"
+---
+# Paso 1: leer datos del cliente
+# Paso 2: calcular precio
+# Paso 3: ESPERAR APROBACIÓN
+# Paso 4: generar PDF + email
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num" style="background:#fee2e2;color:#991b1b;">4</div>
+        <h3>🔌 MCPs</h3>
+        <p>Los "enchufes" que dan a Claude acceso real a tus herramientas. Sin MCP, Claude solo puede leer archivos locales. Con MCPs, puede tocar Drive, Gmail, Notion…</p>
+        <div class="pillar-example">
+MCPs útiles:
+→ Google Drive / Sheets
+→ Gmail / Calendar
+→ Notion
+→ Canva
+→ GitHub
+→ Slack / WhatsApp (vía API)
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:20px;background:#f0f9ff;border:1.5px solid #bae6fd;border-radius:var(--radius);padding:18px 20px;">
+      <p style="font-size:14px;color:#0369a1;line-height:1.6;">
+        <strong>💡 Cómo fluye todo:</strong>
+        Escribes una orden en lenguaje natural → Claude lee el CLAUDE.md → activa la skill correcta → consulta las convenciones → usa los MCPs para acceder a tus herramientas → propone el resultado → tú apruebas → Claude ejecuta.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====================================================
+    SECCIÓN 4 — TU DISEÑO (workshop + notas)
+  ==================================================== -->
+  <section id="workshop">
+    <div class="section-header">
+      <div class="section-icon" style="background:#d1fae5;">✏️</div>
+      <div>
+        <h2>Tu diseño personal</h2>
+        <p>Tus notas se guardan automáticamente en este navegador</p>
+      </div>
+    </div>
+
+    <div class="workshop-grid">
+
+      <div class="workshop-card">
+        <h4>🏢 Mi negocio</h4>
+        <div class="hint">Descripción breve de a qué te dedicas y cuál es tu servicio principal.</div>
+        <textarea id="note-negocio" placeholder="Ej: Consultoría de marketing para pymes. Ayudo a pequeñas empresas a construir su presencia digital con estrategia y sin complicaciones."></textarea>
+        <div class="save-note"><span class="saved-indicator" id="ind-negocio"></span> Guardado automáticamente</div>
+      </div>
+
+      <div class="workshop-card">
+        <h4>🔄 Mis 5 procesos más repetitivos</h4>
+        <div class="hint">Los candidatos a convertirse en skills. Para cada uno: ¿qué haces? ¿qué datos necesitas? ¿qué herramientas usas?</div>
+        <textarea id="note-procesos" placeholder="1. Enviar presupuesto a nuevo cliente — necesito: nombre, servicio, fecha. Uso: Gmail + PDF&#10;2. Actualizar estado de proyecto — necesito: cliente, fase actual. Uso: Notion&#10;3. ..."></textarea>
+        <div class="save-note"><span class="saved-indicator" id="ind-procesos"></span> Guardado automáticamente</div>
+      </div>
+
+      <div class="workshop-card">
+        <h4>📊 Mis fuentes de datos</h4>
+        <div class="hint">¿Dónde viven tus datos? Define las herramientas y qué contiene cada una.</div>
+        <textarea id="note-datos" placeholder="Clientes: Google Sheets (nombre, email, estado, servicio contratado)&#10;Documentos: Google Drive (contratos, presupuestos, entregables)&#10;Comunicación: Gmail&#10;Gestión de proyectos: Notion"></textarea>
+        <div class="save-note"><span class="saved-indicator" id="ind-datos"></span> Guardado automáticamente</div>
+      </div>
+
+      <div class="workshop-card">
+        <h4>⚙️ Mi primera skill</h4>
+        <div class="hint">El proceso que más repites. Nombre, trigger, pasos principales y la regla de seguridad clave.</div>
+        <textarea id="note-skill" placeholder="Nombre: enviar-presupuesto&#10;Trigger: 'envía presupuesto a [nombre]'&#10;Pasos:&#10;  1. Buscar datos del cliente en Sheets&#10;  2. Calcular precio según servicio&#10;  3. MOSTRAR presupuesto — ESPERAR APROBACIÓN&#10;  4. Generar PDF y enviar por Gmail&#10;Regla: NUNCA enviar el email sin que yo apruebe el presupuesto primero."></textarea>
+        <div class="save-note"><span class="saved-indicator" id="ind-skill"></span> Guardado automáticamente</div>
+      </div>
+
+      <div class="workshop-card">
+        <h4>🔌 MCPs que necesito</h4>
+        <div class="hint">¿Qué MCP te aportaría más valor? ¿Cuál instalarás esta semana?</div>
+        <textarea id="note-mcps" placeholder="Prioridad 1: Google Drive — para leer y guardar documentos de clientes&#10;Prioridad 2: Gmail — para crear borradores de email&#10;Prioridad 3: Notion — para actualizar estados de proyectos&#10;&#10;Instalaré esta semana: Google Drive"></textarea>
+        <div class="save-note"><span class="saved-indicator" id="ind-mcps"></span> Guardado automáticamente</div>
+      </div>
+
+      <div class="workshop-card">
+        <h4>📅 Mi plan de acción (esta semana)</h4>
+        <div class="hint">Compromisos concretos para los próximos 7 días.</div>
+        <textarea id="note-plan" placeholder="Lunes: Instalar Claude Code y hacer login&#10;Martes: Escribir el CLAUDE.md básico (identidad + fuentes de datos)&#10;Miércoles: Documentar el proceso de envío de presupuesto como convención&#10;Jueves: Instalar MCP de Google Drive&#10;Viernes: Crear la skill /enviar-presupuesto y probarla"></textarea>
+        <div class="save-note"><span class="saved-indicator" id="ind-plan"></span> Guardado automáticamente</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================
+    SECCIÓN 5 — RECURSOS
+  ==================================================== -->
+  <section id="recursos">
+    <div class="section-header">
+      <div class="section-icon" style="background:#fce7f3;">📦</div>
+      <div>
+        <h2>Recursos que te llevas</h2>
+        <p>Todo lo que necesitas para seguir después del bootcamp</p>
+      </div>
+    </div>
+
+    <div class="resources">
+
+      <a class="resource-card" href="https://claude.ai/code" target="_blank">
+        <div class="resource-icon" style="background:#ede9fe;">🛠️</div>
+        <div>
+          <h4>Claude Code</h4>
+          <p>Descarga e instala la CLI. Necesitas plan Pro o Team en claude.ai.</p>
+        </div>
+      </a>
+
+      <a class="resource-card" href="https://modelcontextprotocol.io" target="_blank">
+        <div class="resource-icon" style="background:#d1fae5;">🔌</div>
+        <div>
+          <h4>MCP Hub</h4>
+          <p>Catálogo completo de MCPs disponibles para conectar tus herramientas.</p>
+        </div>
+      </a>
+
+      <a class="resource-card" href="https://docs.anthropic.com/claude/docs/claude-code" target="_blank">
+        <div class="resource-icon" style="background:#dbeafe;">📖</div>
+        <div>
+          <h4>Documentación oficial</h4>
+          <p>Guía completa de Claude Code: skills, configuración, MCPs y mejores prácticas.</p>
+        </div>
+      </a>
+
+      <a class="resource-card" href="https://github.com/anthropics/claude-code" target="_blank">
+        <div class="resource-icon" style="background:#f3f4f6;">🐙</div>
+        <div>
+          <h4>GitHub Claude Code</h4>
+          <p>Repositorio oficial. Issues, actualizaciones y ejemplos de la comunidad.</p>
+        </div>
+      </a>
+
+    </div>
+
+    <div style="margin-top:20px;background:var(--surface);border:1.5px solid var(--light);border-radius:var(--radius);padding:20px;">
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:14px;">📄 Plantillas del bootcamp</h4>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:9px;">
+          <div>
+            <div style="font-size:14px;font-weight:600;">plantilla-claude-md.md</div>
+            <div style="font-size:12px;color:var(--mid);">Estructura base para tu CLAUDE.md</div>
+          </div>
+          <span style="font-size:12px;background:#ede9fe;color:var(--accent);padding:3px 10px;border-radius:99px;font-weight:600;">Recibida en sesión</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:9px;">
+          <div>
+            <div style="font-size:14px;font-weight:600;">plantilla-skill.md</div>
+            <div style="font-size:12px;color:var(--mid);">Estructura base para crear una skill</div>
+          </div>
+          <span style="font-size:12px;background:#ede9fe;color:var(--accent);padding:3px 10px;border-radius:99px;font-weight:600;">Recibida en sesión</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--bg);border-radius:9px;">
+          <div>
+            <div style="font-size:14px;font-weight:600;">plantilla-convencion.md</div>
+            <div style="font-size:12px;color:var(--mid);">Estructura base para documentar un proceso</div>
+          </div>
+          <span style="font-size:12px;background:#ede9fe;color:var(--accent);padding:3px 10px;border-radius:99px;font-weight:600;">Recibida en sesión</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESET -->
+  <div class="reset-zone">
+    <p>¿Quieres empezar de cero? Esto borrará todos tus checkboxes y notas guardadas.</p>
+    <button class="btn-reset" onclick="resetAll()">Borrar todo el progreso</button>
+  </div>
+
+</main>
+
+<!-- FOOTER ================================================ -->
+<footer>
+  <strong>Bootcamp — Tu negocio con superpoderes</strong><br>
+  <span style="margin-top:6px;display:block;">Tu progreso se guarda localmente en este navegador · No se envía ningún dato a ningún servidor</span>
+</footer>
+
+<!-- ======================================================
+  JAVASCRIPT — localStorage tracking
+====================================================== -->
+<script>
+const STORAGE_KEY = 'bootcamp-claude-v1';
+
+// --- Load state ---
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch { return {}; }
+}
+
+// --- Save state ---
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+// ---- CHECKLIST items (pre + agenda) ----
+function initChecklists() {
+  const state = loadState();
+
+  // Pre-bootcamp checklist
+  document.querySelectorAll('#checklist-pre .check-item').forEach(item => {
+    const id = item.dataset.id;
+    if (state[id]) item.classList.add('done');
+    item.addEventListener('click', () => toggleCheck(item));
+  });
+
+  // Agenda
+  document.querySelectorAll('#checklist-agenda .agenda-item').forEach(item => {
+    const id = item.dataset.id;
+    if (state[id]) item.classList.add('done-block');
+    item.querySelector('.agenda-card').addEventListener('click', () => toggleAgenda(item));
+    item.querySelector('.agenda-dot').addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleAgenda(item);
+    });
+  });
+
+  updateProgress();
+}
+
+function toggleCheck(item) {
+  item.classList.toggle('done');
+  const state = loadState();
+  state[item.dataset.id] = item.classList.contains('done');
+  saveState(state);
+  updateProgress();
+}
+
+function toggleAgenda(item) {
+  item.classList.toggle('done-block');
+  const state = loadState();
+  state[item.dataset.id] = item.classList.contains('done-block');
+  saveState(state);
+  updateProgress();
+}
+
+// ---- PROGRESS ----
+function updateProgress() {
+  const allItems = [
+    ...document.querySelectorAll('#checklist-pre .check-item'),
+    ...document.querySelectorAll('#checklist-agenda .agenda-item')
+  ];
+  const done = allItems.filter(i =>
+    i.classList.contains('done') || i.classList.contains('done-block')
+  ).length;
+  const pct = Math.round((done / allItems.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+// ---- NOTES (textarea) ----
+const noteIds = ['negocio', 'procesos', 'datos', 'skill', 'mcps', 'plan'];
+
+function initNotes() {
+  const state = loadState();
+  noteIds.forEach(id => {
+    const el = document.getElementById('note-' + id);
+    if (state['note-' + id]) el.value = state['note-' + id];
+    el.addEventListener('input', () => saveNote(id, el));
+  });
+}
+
+function saveNote(id, el) {
+  const state = loadState();
+  state['note-' + id] = el.value;
+  saveState(state);
+  const ind = document.getElementById('ind-' + id);
+  ind.classList.add('show');
+  setTimeout(() => ind.classList.remove('show'), 1500);
+}
+
+// ---- RESET ----
+function resetAll() {
+  if (!confirm('¿Seguro que quieres borrar todo el progreso y las notas?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+}
+
+// ---- INIT ----
+initChecklists();
+initNotes();
+</script>
+
+</body>
+</html>
