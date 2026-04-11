@@ -830,7 +830,7 @@ footer span { display: block; margin-top: 6px; font-size: 11px; }
       <div class="hero-meta-item"><span class="dot"></span> <strong>Formato presencial</strong></div>
       <div class="hero-meta-item"><span class="dot"></span> <strong>11:00 – 13:00 / 16:00 – 19:00</strong></div>
       <div class="hero-meta-item"><span class="dot"></span> <strong>Trae tu portátil</strong></div>
-      <div class="hero-meta-item"><span class="dot"></span> <strong>Aprenderás construyendo</strong></div>
+      <div class="hero-meta-item"><span class="dot"></span> <strong>Mañana: teoría · Tarde: práctica</strong></div>
     </div>
     <nav class="hero-nav">
       <a href="#preparacion">01 — Preparación</a>
@@ -975,7 +975,7 @@ footer span { display: block; margin-top: 6px; font-size: 11px; }
           <div class="agenda-time">11:00 – 11:50</div>
           <div class="agenda-title">Introducción: el sistema completo</div>
           <div class="agenda-desc">Por qué Claude va más allá de un chatbot. El caso real. Las 4 capas del sistema. Demo rápida del resultado final.</div>
-          <span class="agenda-badge badge-content">Contenido</span>
+          <span class="agenda-badge badge-content">Presentación</span>
         </div>
       </div>
 
@@ -983,9 +983,9 @@ footer span { display: block; margin-top: 6px; font-size: 11px; }
         <div class="agenda-dot"></div>
         <div class="agenda-card">
           <div class="agenda-time">11:50 – 13:00</div>
-          <div class="agenda-title">CLAUDE.md y Convenciones</div>
-          <div class="agenda-desc">Cómo escribir el "contrato de trabajo" de tu asistente. Los manuales de procedimiento. Ejercicio práctico: escribir tu primer CLAUDE.md.</div>
-          <span class="agenda-badge badge-hands">✏ Ejercicio práctico</span>
+          <div class="agenda-title">Las 4 capas en profundidad</div>
+          <div class="agenda-desc">CLAUDE.md, convenciones, skills, Skill Factory y MCPs. Toda la teoría que necesitas para construir tu sistema por la tarde.</div>
+          <span class="agenda-badge badge-content">Presentación</span>
         </div>
       </div>
 
@@ -994,7 +994,7 @@ footer span { display: block; margin-top: 6px; font-size: 11px; }
         <div class="agenda-card">
           <div class="agenda-time">13:00 – 16:00</div>
           <div class="agenda-title">Comida</div>
-          <div class="agenda-desc">Aprovecha para repasar el CLAUDE.md que has empezado y añadir alguna regla de comportamiento.</div>
+          <div class="agenda-desc">Aprovecha para pensar en tus procesos más repetitivos y dónde guardas la información de tus clientes.</div>
           <span class="agenda-badge badge-break">Comida</span>
         </div>
       </div>
@@ -1002,9 +1002,9 @@ footer span { display: block; margin-top: 6px; font-size: 11px; }
       <div class="agenda-item" data-id="ag-4">
         <div class="agenda-dot"></div>
         <div class="agenda-card">
-          <div class="agenda-time">16:00 – 17:15</div>
-          <div class="agenda-title">Skills + Skill Factory + Demo en vivo</div>
-          <div class="agenda-desc">Qué es una skill y cómo se escribe. Demo completa: de la orden en lenguaje natural al resultado final. Los puntos de revisión.</div>
+          <div class="agenda-time">16:00 – 17:00</div>
+          <div class="agenda-title">Demo en vivo + Framework</div>
+          <div class="agenda-desc">El sistema completo en acción: de la orden en lenguaje natural al resultado final. Framework de 5 preguntas para aplicarlo a tu negocio.</div>
           <span class="agenda-badge badge-demo">▶ Demo en vivo</span>
         </div>
       </div>
@@ -1012,19 +1012,9 @@ footer span { display: block; margin-top: 6px; font-size: 11px; }
       <div class="agenda-item" data-id="ag-5">
         <div class="agenda-dot"></div>
         <div class="agenda-card">
-          <div class="agenda-time">17:15 – 17:45</div>
-          <div class="agenda-title">MCPs: conectando el mundo real</div>
-          <div class="agenda-desc">Qué son los MCPs y para qué sirven. Instalación en vivo. Seguridad: qué nunca subir al repositorio público.</div>
-          <span class="agenda-badge badge-content">Contenido + práctica</span>
-        </div>
-      </div>
-
-      <div class="agenda-item" data-id="ag-6">
-        <div class="agenda-dot"></div>
-        <div class="agenda-card">
-          <div class="agenda-time">17:45 – 19:00</div>
-          <div class="agenda-title">Workshop: diseña tu sistema</div>
-          <div class="agenda-desc">75 minutos para diseñar tu CLAUDE.md, tu primera skill y el mapa de MCPs de tu negocio. Puesta en común con feedback del grupo. Próximos pasos concretos.</div>
+          <div class="agenda-time">17:00 – 19:00</div>
+          <div class="agenda-title">Workshop: construye tu sistema</div>
+          <div class="agenda-desc">2 horas para crear tu CLAUDE.md, tu primera convención, tu primera skill con Skill Factory y conectar tu primer MCP. Puesta en común con feedback del grupo. Cierre y próximos pasos.</div>
           <span class="agenda-badge badge-workshop">⚒ Workshop</span>
         </div>
       </div>
@@ -1163,9 +1153,9 @@ description: Triggers: "envía
       </div>
 
       <div class="workshop-card">
-        <h4>Mi primera skill</h4>
-        <div class="hint">El proceso que más repites. Nombre, trigger, pasos principales y la regla de seguridad clave.</div>
-        <textarea id="note-skill" placeholder="Nombre: enviar-presupuesto&#10;Trigger: 'envía presupuesto a [nombre]'&#10;Pasos:&#10;  1. Buscar datos del cliente en Sheets&#10;  2. Calcular precio según servicio&#10;  3. MOSTRAR presupuesto — ESPERAR APROBACIÓN&#10;  4. Generar PDF y enviar por Gmail&#10;Regla: NUNCA enviar el email sin que yo apruebe el presupuesto primero."></textarea>
+        <h4>Mi primera skill (para Skill Factory)</h4>
+        <div class="hint">Describe aquí el proceso que más repites. Llevarás esta descripción a Skill Factory y Claude generará la skill completa.</div>
+        <textarea id="note-skill" placeholder="Proceso: enviar presupuesto a un nuevo cliente&#10;¿Qué datos necesita? Nombre del cliente, servicio solicitado, fecha&#10;¿Qué herramientas usa? Gmail para enviar, Google Sheets para datos del cliente&#10;¿Cuándo debe pausar y pedirme OK? Antes de enviar el email&#10;¿Qué NUNCA debe hacer solo? Enviar el presupuesto sin mi aprobación"></textarea>
         <div class="save-note"><span class="saved-indicator" id="ind-skill"></span> Guardado automáticamente</div>
       </div>
 
@@ -1179,7 +1169,7 @@ description: Triggers: "envía
       <div class="workshop-card">
         <h4>Mi plan de acción (esta semana)</h4>
         <div class="hint">Compromisos concretos para los próximos 7 días.</div>
-        <textarea id="note-plan" placeholder="Lunes: Instalar Claude Code y hacer login&#10;Martes: Escribir el CLAUDE.md básico (identidad + fuentes de datos)&#10;Miércoles: Documentar el proceso de envío de presupuesto como convención&#10;Jueves: Instalar MCP de Google Drive&#10;Viernes: Crear la skill /enviar-presupuesto y probarla"></textarea>
+        <textarea id="note-plan" placeholder="Lunes: Instalar Claude Code y hacer login&#10;Martes: Abrir Claude Code en mi carpeta y pedirle que cree mi CLAUDE.md&#10;Miércoles: Pedirle a Claude que cree una convención para mi proceso de presupuestos&#10;Jueves: Instalar MCP de Google Drive&#10;Viernes: Abrir Skill Factory y crear la skill /enviar-presupuesto"></textarea>
         <div class="save-note"><span class="saved-indicator" id="ind-plan"></span> Guardado automáticamente</div>
       </div>
 
@@ -1236,27 +1226,27 @@ description: Triggers: "envía
     </div>
 
     <div class="templates-box">
-      <h4>Plantillas del bootcamp</h4>
+      <h4>Claude como punto de entrada — prompts de arranque</h4>
       <div class="template-row">
         <div>
-          <div class="template-name">plantilla-claude-md.md</div>
-          <div class="template-desc">Estructura base para tu CLAUDE.md</div>
+          <div class="template-name">Para crear tu CLAUDE.md</div>
+          <div class="template-desc">"Ayúdame a crear el CLAUDE.md de mi negocio. Te voy a describir cómo trabajo."</div>
         </div>
-        <span class="template-badge">Recibida en sesión</span>
+        <span class="template-badge">En Claude Code</span>
       </div>
       <div class="template-row">
         <div>
-          <div class="template-name">plantilla-skill.md</div>
-          <div class="template-desc">Estructura base para crear una skill</div>
+          <div class="template-name">Para crear una convención</div>
+          <div class="template-desc">"Crea una convención para [proceso]. Te explico cómo lo hago."</div>
         </div>
-        <span class="template-badge">Recibida en sesión</span>
+        <span class="template-badge">En Claude Code</span>
       </div>
       <div class="template-row">
         <div>
-          <div class="template-name">plantilla-convencion.md</div>
-          <div class="template-desc">Estructura base para documentar un proceso</div>
+          <div class="template-name">Para crear una skill</div>
+          <div class="template-desc">"Crea una skill para [proceso]." — Abre Skill Factory primero.</div>
         </div>
-        <span class="template-badge">Recibida en sesión</span>
+        <span class="template-badge">En Skill Factory</span>
       </div>
     </div>
   </section>
